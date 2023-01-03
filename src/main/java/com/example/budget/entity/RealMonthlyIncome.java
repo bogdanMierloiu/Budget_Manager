@@ -6,8 +6,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class ExpectedIncome {
+public class RealMonthlyIncome {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    private String incomeSource;
+
+    private Double amount;
+
 }
