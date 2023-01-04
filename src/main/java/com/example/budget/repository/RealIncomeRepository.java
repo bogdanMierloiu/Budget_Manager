@@ -1,8 +1,7 @@
 package com.example.budget.repository;
 
-import com.example.budget.entity.ExpectedMonthlyIncome;
-import com.example.budget.entity.RealMonthlyIncome;
+import com.example.budget.entity.Income;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RealIncomeRepository extends JpaRepository<RealMonthlyIncome, Integer> {
+public interface RealIncomeRepository extends JpaRepository<Income, Integer> {
 }
