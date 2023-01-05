@@ -38,9 +38,9 @@ public class ExpectedIncomeService {
     }
 
     public Double calculateAmountForPeriod(PeriodRequest periodRequest) {
-        List<ExpectedIncomeResponse> list = mapper.map(expectedIncomeRepository.getAllForPeriod(periodRequest.getStartDate(), periodRequest.getEndDate()));
+        List<ExpectedIncome> list = expectedIncomeRepository.getAllForPeriod(periodRequest.getStartDate(), periodRequest.getEndDate());
         Double total = 0.0;
-        for (ExpectedIncomeResponse response : list) {
+        for (ExpectedIncome response : list) {
             total += response.getAmount();
         }
         return total;
