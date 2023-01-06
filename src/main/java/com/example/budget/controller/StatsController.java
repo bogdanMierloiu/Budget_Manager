@@ -18,4 +18,15 @@ public class StatsController {
     public Double netWorth(@RequestBody PeriodRequest request) {
         return statsService.netWorth(request);
     }
+
+//    @GetMapping("expected-balance")
+//    public Double expectedBalance(@RequestBody PeriodRequest request) {
+//        return statsService.expectedBalance(request);
+//    }
+//    @GetMapping("income-difference")
+//    public Double incomeDifference(@RequestBody PeriodRequest request) {
+//        return statsService.incomeDifference(request);
+//    }
+//
+
 }

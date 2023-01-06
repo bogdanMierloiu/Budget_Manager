@@ -21,14 +21,14 @@ public class ExpectedIncomeController {
         return incomeService.addIncome(income);
     }
 
-    @GetMapping("/get-for-period")
-    public List<ExpectedIncomeResponse> getAllForPeriod(@RequestBody PeriodRequest periodRequest) {
-        return incomeService.getAllForPeriod(periodRequest);
+    @GetMapping("/get-for-period/{id}")
+    public List<ExpectedIncomeResponse> getAllForPeriod(@PathVariable String id) {
+        return incomeService.getAllForPeriod(Integer.parseInt(id));
     }
 
-    @GetMapping("/amount-for-period")
-    public Double amountForPeriod(@RequestBody PeriodRequest periodRequest) {
-        return incomeService.calculateAmountForPeriod(periodRequest);
+    @GetMapping("/amount-for-period/{id}")
+    public Double amountForPeriod(@PathVariable String id) {
+        return incomeService.calculateAmountForPeriod(Integer.parseInt(id));
     }
 
 
