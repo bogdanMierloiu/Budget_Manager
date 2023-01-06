@@ -5,32 +5,35 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import java.time.LocalDate;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class ExpectedIncome {
+public class Period {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String name;
+    private LocalDate startDate;
+    private LocalDate endDate;
 
-    private String incomeSource;
-
-    private Double amount;
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToMany(
+            mappedBy = "period",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
     @ToString.Exclude
-    private Period period;
+    private Set<ExpectedIncome> expectedIncome = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        ExpectedIncome that = (ExpectedIncome) o;
-        return id != null && Objects.equals(id, that.id);
+        Period period = (Period) o;
+        return id != null && Objects.equals(id, period.id);
     }
 
     @Override

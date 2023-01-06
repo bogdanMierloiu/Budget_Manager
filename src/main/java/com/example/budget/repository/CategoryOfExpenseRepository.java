@@ -11,8 +11,4 @@ import java.util.List;
 
 public interface CategoryOfExpenseRepository extends JpaRepository<CategoryOfExpense, Integer> {
 
-    @Query("select t from ExpectedIncome t where t.startDate = :startDate AND t.endDate = :endDate")
-    List<ExpectedIncome> getAllForPeriod(
-            @Param("startDate") LocalDate dateFrom,
-            @Param("endDate") LocalDate dateTo);
 }

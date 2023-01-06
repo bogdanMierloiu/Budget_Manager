@@ -23,16 +23,16 @@ public class StatsService {
         return (amountFromIncome - amountFromExpense);
     }
 
-    public Double expectedBalance(PeriodRequest periodRequest) {
-        Double amountFromExpectedIncome = expectedIncomeService.calculateAmountForPeriod(periodRequest);
-        Double amountFromExpectedExpense = expectedExpenseService.calculateAmountForPeriod(periodRequest);
-        return amountFromExpectedIncome - amountFromExpectedExpense;
-    }
-
-    public Double incomeDifference(PeriodRequest periodRequest) {
-        Double amountFromIncome = incomeService.calculateAmountForPeriod(periodRequest);
-        Double amountFromExpectedIncome = expectedIncomeService.calculateAmountForPeriod(periodRequest);
-        return amountFromIncome - amountFromExpectedIncome;
-    }
+//    public Double expectedBalance(PeriodRequest periodRequest) {
+//        Double amountFromExpectedIncome = expectedIncomeService.calculateAmountForPeriod(periodRequest);
+//        Double amountFromExpectedExpense = expectedExpenseService.calculateAmountForPeriod(periodRequest);
+//        return amountFromExpectedIncome - amountFromExpectedExpense;
+//    }
+//
+//    public Double incomeDifference(PeriodRequest periodRequest) {
+//        Double amountFromIncome = incomeService.calculateAmountForPeriod(periodRequest);
+//        Double amountFromExpectedIncome = expectedIncomeService.calculateAmountForPeriod(periodRequest);
+//        return amountFromIncome - amountFromExpectedIncome;
+//    }
 
 }

@@ -19,14 +19,14 @@ public class StatsController {
         return statsService.netWorth(request);
     }
 
-    @GetMapping("expected-balance")
-    public Double expectedBalance(@RequestBody PeriodRequest request) {
-        return statsService.expectedBalance(request);
-    }
-    @GetMapping("income-difference")
-    public Double incomeDifference(@RequestBody PeriodRequest request) {
-        return statsService.incomeDifference(request);
-    }
-
+//    @GetMapping("expected-balance")
+//    public Double expectedBalance(@RequestBody PeriodRequest request) {
+//        return statsService.expectedBalance(request);
+//    }
+//    @GetMapping("income-difference")
+//    public Double incomeDifference(@RequestBody PeriodRequest request) {
+//        return statsService.incomeDifference(request);
+//    }
+//
 
 }
