@@ -1,9 +1,6 @@
 package com.example.budget.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -25,6 +22,10 @@ public class Income {
     private String incomeSource;
 
     private Double amount;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
+    private Period period;
 
     @Override
     public boolean equals(Object o) {

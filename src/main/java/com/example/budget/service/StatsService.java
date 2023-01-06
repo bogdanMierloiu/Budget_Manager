@@ -17,11 +17,11 @@ public class StatsService {
     private final ExpectedExpenseService expectedExpenseService;
 
 
-    public Double netWorth(PeriodRequest periodRequest) {
-        Double amountFromIncome = incomeService.calculateAmountForPeriod(periodRequest);
-        Double amountFromExpense = expenseService.calculateAmountForPeriod(periodRequest);
-        return (amountFromIncome - amountFromExpense);
-    }
+//    public Double netWorth(PeriodRequest periodRequest) {
+//        Double amountFromIncome = incomeService.calculateAmountForPeriod(periodRequest);
+//        Double amountFromExpense = expenseService.calculateAmountForPeriod(periodRequest);
+//        return (amountFromIncome - amountFromExpense);
+//    }
 
 //    public Double expectedBalance(PeriodRequest periodRequest) {
 //        Double amountFromExpectedIncome = expectedIncomeService.calculateAmountForPeriod(periodRequest);

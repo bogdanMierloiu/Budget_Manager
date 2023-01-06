@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class StatsController {
     private final StatsService statsService;
 
-    @GetMapping("worth")
-    public Double netWorth(@RequestBody PeriodRequest request) {
-        return statsService.netWorth(request);
-    }
+//    @GetMapping("worth")
+//    public Double netWorth(@RequestBody PeriodRequest request) {
+//        return statsService.netWorth(request);
+//    }
 
 //    @GetMapping("expected-balance")
 //    public Double expectedBalance(@RequestBody PeriodRequest request) {

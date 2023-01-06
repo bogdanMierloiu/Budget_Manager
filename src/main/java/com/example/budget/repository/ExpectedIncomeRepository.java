@@ -12,6 +12,5 @@ import java.util.List;
 public interface ExpectedIncomeRepository extends JpaRepository<ExpectedIncome, Integer> {
 
     @Query("select t from ExpectedIncome t where t.period.id = :id")
-    List<ExpectedIncome> getAllForPeriod(
-            @Param("id") Integer id);
+    List<ExpectedIncome> getAllForPeriod(@Param("id") Integer id);
 }

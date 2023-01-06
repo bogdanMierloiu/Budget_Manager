@@ -22,13 +22,13 @@ public class ExpectedIncomeController {
     }
 
     @GetMapping("/get-for-period/{id}")
-    public List<ExpectedIncomeResponse> getAllForPeriod(@PathVariable String id) {
-        return incomeService.getAllForPeriod(Integer.parseInt(id));
+    public List<ExpectedIncomeResponse> getAllForPeriod(@PathVariable Integer id) {
+        return incomeService.getAllForPeriod(id);
     }
 
     @GetMapping("/amount-for-period/{id}")
-    public Double amountForPeriod(@PathVariable String id) {
-        return incomeService.calculateAmountForPeriod(Integer.parseInt(id));
+    public Double amountForPeriod(@PathVariable Integer id) {
+        return incomeService.calculateAmountForPeriod(id);
     }
 
 

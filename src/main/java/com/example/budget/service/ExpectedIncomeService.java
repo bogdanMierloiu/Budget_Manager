@@ -16,7 +16,6 @@ import java.util.List;
 //@RequiredArgsConstructor - I wrote the constructor with final field
 public class ExpectedIncomeService {
     private final ExpectedIncomeRepository expectedIncomeRepository;
-
     private final ExpectedIncomeMapper mapper;
     private final PeriodRepository periodRepository;
 

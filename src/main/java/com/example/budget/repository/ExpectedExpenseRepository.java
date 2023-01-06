@@ -11,8 +11,7 @@ import java.util.List;
 
 public interface ExpectedExpenseRepository extends JpaRepository<ExpectedExpense, Integer> {
 
-    @Query("select t from ExpectedExpense t where t.startDate = :startDate AND t.endDate = :endDate")
+    @Query("select t from ExpectedExpense t where t.period.id = :id")
     List<ExpectedExpense> getAllForPeriod(
-            @Param("startDate") LocalDate dateFrom,
-            @Param("endDate") LocalDate dateTo);
+            @Param("id") Integer id);
 }

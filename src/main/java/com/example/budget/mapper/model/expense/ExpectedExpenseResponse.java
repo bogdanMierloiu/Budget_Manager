@@ -1,6 +1,7 @@
 package com.example.budget.mapper.model.expense;
 
 import com.example.budget.mapper.model.category.CategoryOfExpenseResponse;
+import com.example.budget.mapper.model.period.PeriodResponse;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
@@ -15,9 +16,7 @@ public class ExpectedExpenseResponse {
 
     private Double amount;
 
-    private LocalDate startDate;
-
-    private LocalDate endDate;
+    private PeriodResponse period;
 
     private CategoryOfExpenseResponse category;
 }

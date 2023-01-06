@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Period;
+import java.util.List;
 
 @RestController
 @RequestMapping("expected-expense")
@@ -21,8 +22,13 @@ public class ExpectedExpenseController {
         return expectedExpenseService.add(request);
     }
 
-    @GetMapping("/amount-for-period")
-    public Double amountForPeriod(@RequestBody PeriodRequest request) {
-        return expectedExpenseService.calculateAmountForPeriod(request);
+    @GetMapping("get-for-period/{id}")
+    public List<ExpectedExpenseResponse> getAllForPeriod(@PathVariable Integer id) {
+        return expectedExpenseService.getAllForPeriod(id);
+    }
+
+    @GetMapping("/amount-for-period/{id}")
+    public Double amountForPeriod(@PathVariable Integer id) {
+        return expectedExpenseService.calculateAmountForPeriod(id);
     }
 }

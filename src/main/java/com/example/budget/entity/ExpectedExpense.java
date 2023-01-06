@@ -3,11 +3,12 @@ package com.example.budget.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.Hibernate;
 
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.Objects;
 
 @Entity
@@ -24,9 +25,9 @@ public class ExpectedExpense {
     @Positive
     private Double amount;
 
-    private LocalDate startDate;
-
-    private LocalDate endDate;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
+    private Period period;
     @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
     private CategoryOfExpense category;

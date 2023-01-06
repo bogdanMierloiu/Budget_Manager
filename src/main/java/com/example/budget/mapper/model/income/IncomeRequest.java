@@ -17,6 +17,7 @@ public class IncomeRequest {
 
     private LocalDate date;
 
+    private Integer periodId;
 
 
 }

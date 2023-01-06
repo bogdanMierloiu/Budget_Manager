@@ -1,5 +1,6 @@
 package com.example.budget.mapper.model.income;
 
+import com.example.budget.mapper.model.period.PeriodResponse;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -10,4 +11,6 @@ public class IncomeResponse {
     private Double amount;
 
     private LocalDate date;
+
+    private PeriodResponse period;
 }

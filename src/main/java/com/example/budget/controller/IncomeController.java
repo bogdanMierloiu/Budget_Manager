@@ -24,15 +24,14 @@ public class IncomeController {
         return incomeService.addIncome(income);
     }
 
-    @GetMapping("/get-for-period")
-    public List<IncomeResponse> getAllForPeriod(@RequestBody PeriodRequest periodRequest) {
-        return incomeService.getAllForPeriod(periodRequest);
+    @GetMapping("/get-for-period/{id}")
+    public List<IncomeResponse> getAllForPeriod(@PathVariable Integer id) {
+        return incomeService.getAllForPeriod(id);
     }
 
-    @GetMapping("/amount-for-period")
-    public Double amountForPeriod(@RequestBody PeriodRequest periodRequest) {
-        return incomeService.calculateAmountForPeriod(periodRequest);
+    @GetMapping("/amount-for-period/{id}")
+    public Double amountForPeriod(@PathVariable Integer id) {
+        return incomeService.calculateAmountForPeriod(id);
     }
-
 
 }

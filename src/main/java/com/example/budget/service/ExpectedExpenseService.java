@@ -7,6 +7,7 @@ import com.example.budget.mapper.model.expense.ExpectedExpenseRequest;
 import com.example.budget.mapper.model.expense.ExpectedExpenseResponse;
 import com.example.budget.repository.CategoryOfExpenseRepository;
 import com.example.budget.repository.ExpectedExpenseRepository;
+import com.example.budget.repository.PeriodRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,11 +18,9 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor
 public class ExpectedExpenseService {
-
     private final ExpectedExpenseRepository expectedExpenseRepository;
-
     private final CategoryOfExpenseRepository categoryOfExpenseRepository;
-
+    private final PeriodRepository periodRepository;
     private final ExpectedExpenseMapper mapper;
 
 
@@ -30,17 +29,20 @@ public class ExpectedExpenseService {
         expense.setAmount(request.getAmount());
         expense.setSpentOn(request.getSpentOn());
         expense.setCategory(categoryOfExpenseRepository.findById(request.getCategoryId()).orElseThrow());
-        expense.setStartDate(request.getStartDate());
-        expense.setEndDate(request.getEndDate());
+        expense.setPeriod(periodRepository.findById(request.getPeriodId()).orElseThrow());
         return mapper.map(expectedExpenseRepository.save(expense));
     }
 
-    public Double calculateAmountForPeriod(PeriodRequest periodRequest) {
+    public List<ExpectedExpenseResponse> getAllForPeriod(Integer id) {
+        return mapper.map(expectedExpenseRepository.getAllForPeriod(id));
+    }
+
+    public Double calculateAmountForPeriod(Integer id) {
         List<ExpectedExpense> expectedExpenseList = expectedExpenseRepository.getAllForPeriod
-                (periodRequest.getStartDate(), periodRequest.getEndDate());
-        Double total = 0.0;
+                (id);
+        double total = 0.0;
         for (ExpectedExpense expectedExpense : expectedExpenseList) {
-            total = +expectedExpense.getAmount();
+            total += expectedExpense.getAmount();
         }
         return total;
     }
