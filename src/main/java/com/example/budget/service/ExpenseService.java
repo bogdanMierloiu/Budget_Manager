@@ -2,45 +2,55 @@ package com.example.budget.service;
 
 import com.example.budget.entity.CategoryOfExpense;
 import com.example.budget.entity.Expense;
+import com.example.budget.entity.Period;
 import com.example.budget.mapper.ExpenseMapper;
 import com.example.budget.mapper.model.PeriodRequest;
 import com.example.budget.mapper.model.expense.ExpenseRequest;
 import com.example.budget.mapper.model.expense.ExpenseResponse;
 import com.example.budget.repository.CategoryOfExpenseRepository;
 import com.example.budget.repository.ExpenseRepository;
+import com.example.budget.repository.PeriodRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class ExpenseService {
-
     private final ExpenseRepository expenseRepository;
-
     private final CategoryOfExpenseRepository categoryOfExpenseRepository;
-
     private final ExpenseMapper mapper;
+    private final PeriodRepository periodRepository;
 
     public ExpenseResponse add(ExpenseRequest request) {
         CategoryOfExpense category = categoryOfExpenseRepository.findById(request.getCategoryId()).orElseThrow();
+        Period period = periodRepository.findById(request.getPeriodId()).orElseThrow();
         Expense expense = new Expense();
-        expense.setDate(request.getDate());
-        expense.setSpentOn(request.getSpentOn());
-        expense.setAmount(request.getAmount());
-        expense.setCategory(category);
+        if (request.getDate().isAfter(period.getStartDate().minusDays(1))
+                && request.getDate().isBefore(period.getEndDate().plusDays(1))) {
+            expense.setSpentOn(request.getSpentOn());
+            expense.setAmount(request.getAmount());
+            expense.setDate(request.getDate());
+            expense.setCategory(category);
+            expense.setPeriod(period);
+        } else {
+            throw new IllegalArgumentException("Invalid date");
+        }
         return mapper.map(expenseRepository.save(expense));
     }
 
-    public List<ExpenseResponse> getAllForPeriod(PeriodRequest request) {
-        return mapper.map(expenseRepository.getAllForPeriod(request.getStartDate(), request.getEndDate()));
+
+    public List<ExpenseResponse> getAllForPeriod(Integer id) {
+        return mapper.map(expenseRepository.getAllForPeriod(id));
     }
 
-    public Double calculateAmountForPeriod(PeriodRequest request) {
-        List<Expense> list = expenseRepository.getAllForPeriod(request.getStartDate(), request.getEndDate());
+    public Double calculateAmountForPeriod(Integer id) {
+        List<Expense> list = expenseRepository.getAllForPeriod(id);
         Double total = 0.0;
         for (Expense expense : list) {
             total += expense.getAmount();

@@ -13,8 +13,7 @@ import java.util.List;
 
 public interface ExpenseRepository extends JpaRepository<Expense, Integer> {
 
-    @Query("select t from Expense t where t.date between :startDate AND :endDate")
+    @Query("select t from Expense t where t.period.id = :id")
     List<Expense> getAllForPeriod(
-            @Param("startDate") LocalDate dateFrom,
-            @Param("endDate") LocalDate dateTo);
+            @Param("id") Integer id);
 }

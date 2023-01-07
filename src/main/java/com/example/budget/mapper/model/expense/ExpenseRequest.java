@@ -8,11 +8,13 @@ import java.time.LocalDate;
 
 @Data
 public class ExpenseRequest {
-    private LocalDate date;
     @NotBlank(message = "Invalid name")
     private String spentOn;
     @Positive
     private Double amount;
+    private LocalDate date;
     private Integer categoryId;
+
+    private Integer periodId;
 
 }

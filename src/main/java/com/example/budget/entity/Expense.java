@@ -18,14 +18,19 @@ public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private LocalDate date;
     @NotBlank(message = "Invalid name")
     private String spentOn;
     @Positive
     private Double amount;
+
+    private LocalDate date;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
+    private Period period;
     @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
     private CategoryOfExpense category;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

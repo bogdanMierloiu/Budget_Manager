@@ -1,13 +1,11 @@
 package com.example.budget.controller;
 
-import com.example.budget.mapper.model.PeriodRequest;
 import com.example.budget.mapper.model.expense.ExpectedExpenseRequest;
 import com.example.budget.mapper.model.expense.ExpectedExpenseResponse;
 import com.example.budget.service.ExpectedExpenseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.Period;
 import java.util.List;
 
 @RestController
@@ -27,8 +25,14 @@ public class ExpectedExpenseController {
         return expectedExpenseService.getAllForPeriod(id);
     }
 
+    @GetMapping("get-for-category/{categoryId}/{periodId}")
+    public List<ExpectedExpenseResponse> getAllForCategory(@PathVariable Integer categoryId, @PathVariable Integer periodId) {
+        return expectedExpenseService.getAllForCategory(categoryId, periodId);
+    }
+
     @GetMapping("/amount-for-period/{id}")
     public Double amountForPeriod(@PathVariable Integer id) {
         return expectedExpenseService.calculateAmountForPeriod(id);
     }
+
 }

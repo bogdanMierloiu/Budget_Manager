@@ -9,6 +9,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -21,5 +23,13 @@ public class CategoryOfExpenseService {
         CategoryOfExpense categoryOfExpense = new CategoryOfExpense();
         categoryOfExpense.setName(request.getName());
         return mapper.map(categoryOfExpenseRepository.save(categoryOfExpense));
+    }
+
+    public List<CategoryOfExpenseResponse> getAll() {
+        return mapper.map(categoryOfExpenseRepository.findAll());
+    }
+
+    public CategoryOfExpenseResponse findById(Integer id) {
+        return mapper.map(categoryOfExpenseRepository.findById(id).orElseThrow());
     }
 }

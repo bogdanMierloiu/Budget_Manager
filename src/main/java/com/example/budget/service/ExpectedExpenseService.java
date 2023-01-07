@@ -37,6 +37,10 @@ public class ExpectedExpenseService {
         return mapper.map(expectedExpenseRepository.getAllForPeriod(id));
     }
 
+    public List<ExpectedExpenseResponse> getAllForCategory(Integer categoryId, Integer periodId) {
+        return mapper.map(expectedExpenseRepository.getAllForCategory(categoryId, periodId));
+    }
+
     public Double calculateAmountForPeriod(Integer id) {
         List<ExpectedExpense> expectedExpenseList = expectedExpenseRepository.getAllForPeriod
                 (id);

@@ -2,6 +2,7 @@ package com.example.budget.service;
 
 import com.example.budget.entity.ExpectedIncome;
 import com.example.budget.entity.Income;
+import com.example.budget.entity.Period;
 import com.example.budget.mapper.ExpectedIncomeMapper;
 import com.example.budget.mapper.IncomeMapper;
 import com.example.budget.mapper.model.income.ExpectedIncomeRequest;
@@ -34,12 +35,17 @@ public class IncomeService {
     }
 
     public IncomeResponse addIncome(IncomeRequest request) {
-        //TODO - de verificat daca data introdusa este in Perioada -> daca nu este -> eroare
+        Period period = periodRepository.findById(request.getPeriodId()).orElseThrow();
         Income income = new Income();
-        income.setIncomeSource(request.getIncomeSource());
-        income.setAmount(request.getAmount());
-        income.setDate(request.getDate());
-        income.setPeriod(periodRepository.findById(request.getPeriodId()).orElseThrow());
+        if (request.getDate().isAfter(period.getStartDate().minusDays(1))
+                && request.getDate().isBefore(period.getEndDate().plusDays(1))) {
+            income.setIncomeSource(request.getIncomeSource());
+            income.setAmount(request.getAmount());
+            income.setDate(request.getDate());
+            income.setPeriod(period);
+        } else {
+            throw new IllegalArgumentException("Invalid data");
+        }
         return mapper.map(incomeRepository.save(income));
     }
 

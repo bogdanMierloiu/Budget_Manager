@@ -4,10 +4,9 @@ import com.example.budget.mapper.model.category.CategoryOfExpenseRequest;
 import com.example.budget.mapper.model.category.CategoryOfExpenseResponse;
 import com.example.budget.service.CategoryOfExpenseService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,5 +20,16 @@ public class CategoryOfExpenseController {
     public CategoryOfExpenseResponse addCategory(@RequestBody CategoryOfExpenseRequest request) {
         return categoryOfExpenseService.addCategory(request);
     }
+
+    @GetMapping("/all")
+    public List<CategoryOfExpenseResponse> getAll() {
+        return categoryOfExpenseService.getAll();
+    }
+
+    @GetMapping("/find/{id}")
+    public CategoryOfExpenseResponse findById(@PathVariable Integer id) {
+        return categoryOfExpenseService.findById(id);
+    }
+
 
 }

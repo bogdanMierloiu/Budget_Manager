@@ -43,6 +43,13 @@ public class Period {
     )
     @ToString.Exclude
     private Set<ExpectedExpense> expectedExpenses = new HashSet<>();
+    @OneToMany(
+            mappedBy = "period",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @ToString.Exclude
+    private Set<Expense> expenses = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {

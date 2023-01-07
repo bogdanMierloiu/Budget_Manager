@@ -9,6 +9,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -22,5 +24,12 @@ public class PeriodService {
         period.setStartDate(request.getStartDate());
         period.setEndDate(request.getEndDate());
         return mapper.map(periodRepository.save(period));
+    }
+
+    public List<PeriodResponse> getAll() {
+        return mapper.map(periodRepository.findAll());
+    }
+    public PeriodResponse findById(Integer id) {
+        return mapper.map(periodRepository.findById(id).orElseThrow());
     }
 }

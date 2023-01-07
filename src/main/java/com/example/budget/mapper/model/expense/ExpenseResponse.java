@@ -1,8 +1,7 @@
 package com.example.budget.mapper.model.expense;
 
-import com.example.budget.entity.CategoryOfExpense;
 import com.example.budget.mapper.model.category.CategoryOfExpenseResponse;
-import jdk.jfr.Category;
+import com.example.budget.mapper.model.period.PeriodResponse;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -14,5 +13,6 @@ public class ExpenseResponse {
     private String spentOn;
     private Double amount;
     private CategoryOfExpenseResponse category;
+    private PeriodResponse period;
 
 }

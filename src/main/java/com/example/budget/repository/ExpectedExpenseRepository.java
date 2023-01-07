@@ -14,4 +14,7 @@ public interface ExpectedExpenseRepository extends JpaRepository<ExpectedExpense
     @Query("select t from ExpectedExpense t where t.period.id = :id")
     List<ExpectedExpense> getAllForPeriod(
             @Param("id") Integer id);
+
+    @Query("select t from ExpectedExpense t where t.category.id = :categoryId and t.period.id = :periodId")
+    List<ExpectedExpense> getAllForCategory(@Param("categoryId") Integer categoryId, @Param("periodId") Integer periodId);
 }

@@ -21,14 +21,14 @@ public class ExpenseController {
         return expenseService.add(request);
     }
 
-    @GetMapping("get-for-period")
-    public List<ExpenseResponse> getAllForPeriod(@RequestBody PeriodRequest request) {
-        return expenseService.getAllForPeriod(request);
+    @GetMapping("get-for-period/{id}")
+    public List<ExpenseResponse> getAllForPeriod(@PathVariable Integer id) {
+        return expenseService.getAllForPeriod(id);
     }
 
-    @GetMapping("amount-for-period")
-    public Double amountForPeriod(@RequestBody PeriodRequest request) {
-        return expenseService.calculateAmountForPeriod(request);
+    @GetMapping("amount-for-period/{id}")
+    public Double amountForPeriod(@PathVariable Integer id) {
+        return expenseService.calculateAmountForPeriod(id);
     }
 
 }
