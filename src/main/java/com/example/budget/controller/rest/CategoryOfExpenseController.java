@@ -1,4 +1,4 @@
-package com.example.budget.controller;
+package com.example.budget.controller.rest;
 
 import com.example.budget.mapper.model.category.CategoryOfExpenseRequest;
 import com.example.budget.mapper.model.category.CategoryOfExpenseResponse;

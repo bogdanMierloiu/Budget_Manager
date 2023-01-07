@@ -1,10 +1,7 @@
 package com.example.budget.service;
 
 import com.example.budget.entity.ExpectedExpense;
-import com.example.budget.entity.Period;
-import com.example.budget.mapper.model.PeriodRequest;
 import com.example.budget.repository.ExpectedExpenseRepository;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

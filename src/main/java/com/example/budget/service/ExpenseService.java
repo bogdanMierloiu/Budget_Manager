@@ -4,7 +4,6 @@ import com.example.budget.entity.CategoryOfExpense;
 import com.example.budget.entity.Expense;
 import com.example.budget.entity.Period;
 import com.example.budget.mapper.ExpenseMapper;
-import com.example.budget.mapper.model.PeriodRequest;
 import com.example.budget.mapper.model.expense.ExpenseRequest;
 import com.example.budget.mapper.model.expense.ExpenseResponse;
 import com.example.budget.repository.CategoryOfExpenseRepository;
@@ -14,8 +13,6 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.util.List;
 
 @Service

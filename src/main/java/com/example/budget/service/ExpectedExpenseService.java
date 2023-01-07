@@ -2,7 +2,6 @@ package com.example.budget.service;
 
 import com.example.budget.entity.ExpectedExpense;
 import com.example.budget.mapper.ExpectedExpenseMapper;
-import com.example.budget.mapper.model.PeriodRequest;
 import com.example.budget.mapper.model.expense.ExpectedExpenseRequest;
 import com.example.budget.mapper.model.expense.ExpectedExpenseResponse;
 import com.example.budget.repository.CategoryOfExpenseRepository;

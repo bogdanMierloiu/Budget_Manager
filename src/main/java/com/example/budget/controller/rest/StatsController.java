@@ -1,9 +1,11 @@
-package com.example.budget.controller;
+package com.example.budget.controller.rest;
 
-import com.example.budget.mapper.model.PeriodRequest;
 import com.example.budget.service.StatsService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("stats")

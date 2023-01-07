@@ -1,11 +1,7 @@
-package com.example.budget.controller;
+package com.example.budget.controller.rest;
 
-import com.example.budget.mapper.model.PeriodRequest;
-import com.example.budget.mapper.model.income.ExpectedIncomeRequest;
-import com.example.budget.mapper.model.income.ExpectedIncomeResponse;
 import com.example.budget.mapper.model.income.IncomeRequest;
 import com.example.budget.mapper.model.income.IncomeResponse;
-import com.example.budget.service.ExpectedIncomeService;
 import com.example.budget.service.IncomeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

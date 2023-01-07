@@ -1,16 +1,10 @@
 package com.example.budget.service;
 
-import com.example.budget.entity.ExpectedIncome;
 import com.example.budget.entity.Income;
 import com.example.budget.entity.Period;
-import com.example.budget.mapper.ExpectedIncomeMapper;
 import com.example.budget.mapper.IncomeMapper;
-import com.example.budget.mapper.model.income.ExpectedIncomeRequest;
-import com.example.budget.mapper.model.income.ExpectedIncomeResponse;
-import com.example.budget.mapper.model.PeriodRequest;
 import com.example.budget.mapper.model.income.IncomeRequest;
 import com.example.budget.mapper.model.income.IncomeResponse;
-import com.example.budget.repository.ExpectedIncomeRepository;
 import com.example.budget.repository.IncomeRepository;
 import com.example.budget.repository.PeriodRepository;
 import jakarta.transaction.Transactional;

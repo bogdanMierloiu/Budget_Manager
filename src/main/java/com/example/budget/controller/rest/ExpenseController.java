@@ -1,6 +1,5 @@
-package com.example.budget.controller;
+package com.example.budget.controller.rest;
 
-import com.example.budget.mapper.model.PeriodRequest;
 import com.example.budget.mapper.model.expense.ExpenseRequest;
 import com.example.budget.mapper.model.expense.ExpenseResponse;
 import com.example.budget.service.ExpenseService;
