@@ -4,6 +4,7 @@ import com.example.budget.entity.CategoryOfExpense;
 import com.example.budget.entity.Expense;
 import com.example.budget.entity.Period;
 import com.example.budget.mapper.ExpenseMapper;
+import com.example.budget.mapper.model.expense.ExpectedExpenseResponse;
 import com.example.budget.mapper.model.expense.ExpenseRequest;
 import com.example.budget.mapper.model.expense.ExpenseResponse;
 import com.example.budget.repository.CategoryOfExpenseRepository;
@@ -44,6 +45,9 @@ public class ExpenseService {
 
     public List<ExpenseResponse> getAllForPeriod(Integer id) {
         return mapper.map(expenseRepository.getAllForPeriod(id));
+    }
+    public List<ExpenseResponse> getAllForCategory(Integer categoryId, Integer periodId) {
+        return mapper.map(expenseRepository.getAllForCategory(categoryId, periodId));
     }
 
     public Double calculateAmountForPeriod(Integer id) {

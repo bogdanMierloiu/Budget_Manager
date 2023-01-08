@@ -36,6 +36,10 @@ public class StatsController {
     public Double amountExpectedExpenseForCategory(@PathVariable Integer categoryId, @PathVariable Integer periodId) {
         return statsService.amountExpectedExpenseForCategory(categoryId, periodId);
     }
+    @GetMapping("amount-expense-category/{categoryId}/{periodId}")
+    public Double amountExpenseForCategory(@PathVariable Integer categoryId, @PathVariable Integer periodId) {
+        return statsService.amountExpenseForCategory(categoryId, periodId);
+    }
 
 
 }

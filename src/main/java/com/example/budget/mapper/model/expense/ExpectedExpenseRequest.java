@@ -1,6 +1,5 @@
 package com.example.budget.mapper.model.expense;
 
-import com.example.budget.entity.Period;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;

@@ -1,7 +1,9 @@
 package com.example.budget.service;
 
 import com.example.budget.entity.ExpectedExpense;
+import com.example.budget.entity.Expense;
 import com.example.budget.repository.ExpectedExpenseRepository;
+import com.example.budget.repository.ExpenseRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,8 @@ public class StatsService {
     private final ExpectedExpenseService expectedExpenseService;
 
     private final ExpectedExpenseRepository expectedExpenseRepository;
+
+    private final ExpenseRepository expenseRepository;
 
 
     public Double netWorth(Integer periodId) {
@@ -51,6 +55,15 @@ public class StatsService {
         double total = 0.0;
         for (ExpectedExpense expectedExpense : list) {
             total += expectedExpense.getAmount();
+        }
+        return total;
+    }
+
+    public Double amountExpenseForCategory(Integer categoryId, Integer periodId) {
+        List<Expense> list = expenseRepository.getAllForCategory(categoryId, periodId);
+        double total = 0.0;
+        for (Expense expense : list) {
+            total += expense.getAmount();
         }
         return total;
     }
