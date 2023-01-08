@@ -5,9 +5,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        body {
+            display: inline-grid;
+        }
+
+    </style>
 </head>
 <body>
-<h1> Period page</h1>
+<h2 th:text="${period.getName()}"> Period</h2>
 <table>
     <p2 style="font-family: sans-serif"> EXPECTED INCOME</p2>
     <thead>
@@ -15,7 +21,7 @@
     <th scope="col"> Amount</th>
     </thead>
     <tbody>
-    <tr th:each="expectedIncome: ${allExpectedIncomeForPeriod}">
+    <tr th:each="expectedIncome: ${allExpectedIncomesForPeriod}">
         <td>
             <span th:text="${expectedIncome.getIncomeSource()}"></span>
         </td>
@@ -25,7 +31,30 @@
     </tr>
     </tbody>
 </table>
+<table>
+    <p2 style="font-family: sans-serif"> INCOME</p2>
+    <thead>
+    <th scope="col"> Source</th>
+    <th scope="col"> Amount</th>
+    </thead>
+    <tbody>
+    <tr th:each="income: ${allIncomesForPeriod}">
+        <td>
+            <span th:text="${income.getIncomeSource()}"></span>
+        </td>
+        <td>
+            <span th:text="${income.getAmount() + ' RON'}"></span>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
+<div>
+    <form th:action="@{/period/goToAddAnIncome}">
+        <input type="hidden" th:value="${period.id}" name="id">
+        <button type="submit"> Add an income</button>
+    </form>
+</div>
 
 </body>
 </html>

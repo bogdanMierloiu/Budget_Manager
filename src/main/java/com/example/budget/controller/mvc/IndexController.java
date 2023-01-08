@@ -21,4 +21,8 @@ public class IndexController {
         model.addAttribute("periods", periodService.getAll());
         return "allPeriodsPage";
     }
+    @GetMapping("/goToAddPeriodPage")
+    public String goToAddPeriodPage() {
+        return "addPeriodPage";
+    }
 }
